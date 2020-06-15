@@ -48,7 +48,7 @@ class NotesRoutes {
 		const { liked } = req.body;
 		const { id } = req.params;
 		const likedNote = await Note.findOneAndUpdate({ _id: id }, { liked }, { new: true });
-		res.json({ data: likedNote });
+		res.json({ Mensaje: 'Guardaste esta nota como favorita.' });
 	}
 
 	public async deleteNote(req: Request, res: Response): Promise<void> {
