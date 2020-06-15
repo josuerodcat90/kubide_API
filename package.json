@@ -1,12 +1,30 @@
 {
-  "name": "kubide_API",
+  "name": "kubide_api",
   "version": "0.0.1",
-  "description": "",
+  "description": "Una API Simple para crear, obtener y gestionar notas",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ts": "tsc -w",
+    "dev": "nodemon ./build/server.js",
+    "start": "tsc && node ./build/server.js",
+    "clean": "rimraf ./build"
   },
   "keywords": [],
   "author": "Josue Rodriguez <josuerodcat90@gmail.com> (https://github.com/josuerodcat90)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/mongoose": "^5.7.22",
+    "@types/node": "^14.0.11",
+    "nodemon": "^2.0.4",
+    "typescript": "^3.9.5"
+  }
 }
