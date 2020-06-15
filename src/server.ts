@@ -3,6 +3,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import 'dotenv/config';
 
+import indexRoutes from './routes/indexRoutes';
+import notesRoutes from './routes/NotesRoutes';
 class Server {
 	public app: express.Application;
 
@@ -19,11 +21,11 @@ class Server {
 			.connect(URI, {
 				useNewUrlParser: true,
 				useCreateIndex: true,
-				useFindAndModify: true,
+				useFindAndModify: false,
 				useUnifiedTopology: true,
 			})
 			.then(() => {
-				console.log('>>>DB is Connected<<< ');
+				console.log('>>>Base de datos conectada<<< ');
 			});
 
 		///Settings
@@ -35,11 +37,14 @@ class Server {
 		this.app.use(cors());
 	}
 
-	routes() {}
+	routes() {
+		this.app.use(indexRoutes);
+		this.app.use('/api/notas', notesRoutes);
+	}
 
 	start() {
 		this.app.listen(this.app.get('port'), () => {
-			console.log(`>>>Server running at port ${this.app.get('port')}<<<`);
+			console.log(`>>>Servidor corriendo en el puerto ${this.app.get('port')}<<<`);
 		});
 	}
 }
